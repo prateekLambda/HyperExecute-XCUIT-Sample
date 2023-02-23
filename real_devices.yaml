@@ -1,0 +1,24 @@
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+version: "0.2"
+concurrency: 1
+runson: ios
+autosplit: true
+framework:
+  name: "ios/xcui"
+  args:
+    appPath: LambdaUiKitIOS.ipa
+    testSuitePath: testSuite.ipa
+    deviceSelectionStrategy: all
+    devices: ["iPhone 14-16"]
+    video: true
+    deviceLog: true
+    networkLog: true
+    buildName: "RD-HYP-Build"
+    shards:
+      mappings:
+       - name: shard1
+         strategy: "only-testing"
+         values: ["LambdaUiKitIOSUITests/testopenmfmlWebSiteOnBrowser", "LambdaUiKitIOSUITests/testopenIfconfigWebSiteOnBrowser"]
+jobLabel: ['${DATE} - ${DAY}', 'RD_HYP Job']
